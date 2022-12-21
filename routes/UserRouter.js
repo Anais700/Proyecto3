@@ -88,7 +88,8 @@ UserRouter.post("/user", async (req, res)=>{
 
 UserRouter.get("/users", auth, authAdmin, async (req, res) =>{
     try{
-        let users = await User.find({}).select("name email")
+        let users = await User.find({})
+        // .select("name email")
         if(!users){
             return res.status(400).json({
                 success: false,
@@ -168,7 +169,7 @@ UserRouter.put("/user/:id", auth, authAdmin, async (req, res)=>{
         if (role > 1){
             return res.status(400).json({
                 success: false,
-                message: "Rol not allowed"
+                message: "Role not allowed"
             })
         }
         await User.findByIdAndUpdate(id, {name, surname, role})
@@ -187,14 +188,22 @@ UserRouter.put("/user/:id", auth, authAdmin, async (req, res)=>{
 UserRouter.put("/user", auth, async (req, res)=>{
     const {nickname, password} = req.body;
     try {
-        let user = await User.findById(req.user.id).select("nickname password")
+        
+        const user = await User.findById(req.user.id)
+        // .select("nickname password")
+        // const Password = user.password
+        let passwordHash = bcrypt.hashSync(password, salt);
+
         if (!user) {
             return res.status(400).json({
                 success: false,
                 message: "User not found"
             })
         }
-        await User.findByIdAndUpdate(req.user.id, {nickname, password})
+        await User.findByIdAndUpdate(req.user.id, {
+            nickname, 
+            password: passwordHash,
+        })
         return res.status(200).json({
             success: true,
             message: "User updated successfully"
@@ -255,6 +264,7 @@ UserRouter.post("/login", async (req, res)=>{
             success: true,
             message: "Usuario identificado con éxito",
             accessToken,
+            user,
         }) 
     } catch (error) {
         return res.status(500).json({

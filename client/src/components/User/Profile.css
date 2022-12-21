@@ -1,0 +1,41 @@
+div .profile{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    width: 55%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:#B1DBF2;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 2%;
+}
+.in{
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    
+}
+.botones{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+h2{
+    margin-top: 3rem;
+    text-align: center;
+}
+/* button{
+    background-color: #F2C9CC;
+} */
+.form-control{
+    margin: auto;
+}
+.nota{
+    display: flex;
+    margin: auto;
+    width: 50%;
+    text-align: justify;
+    margin-top: 1rem;
+}

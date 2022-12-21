@@ -2,11 +2,12 @@ const express = require("express");
 const Product = require("../models/Product");
 const ProductRouter = express.Router();
 const auth = require("../middleware/auth");
-const authAdmin = require("../middleware/authAdmin")
+const authAdmin = require("../middleware/authAdmin");
+const Subcategory = require("../models/Subcategory");
 
 //CREAR UN PRODUCTO
 ProductRouter.post("/product", auth, authAdmin, async (req, res)=>{
-    const {title, description, price, subcategoryId, image} = req.body
+    const {title, description, price, sizes, subcategoryId, image} = req.body
     try {
         if(!title || !description || !price || !subcategoryId || !image) {
             return res.status(400).json({
@@ -26,7 +27,7 @@ ProductRouter.post("/product", auth, authAdmin, async (req, res)=>{
                 message: "Description must be between 10 and 450 characters",
             })
         }
-        if (price.length < 2 || price.length > 10) {
+        if (price.length < 1 || price.length > 10) {
             return res.status(400).json({
                 success: false,
                 message: "Price must be between 2 and 10 digits"
@@ -37,10 +38,16 @@ ProductRouter.post("/product", auth, authAdmin, async (req, res)=>{
             title,  
             description, 
             price,
+            sizes,
             Subcategory: subcategoryId,
             image
         })
         await product.save()
+        await Subcategory.findByIdAndUpdate(subcategoryId, {
+            $push:{
+                products: product._id
+            }
+        })
         return res.status(200).json({
             success: true,
             product,
@@ -49,7 +56,7 @@ ProductRouter.post("/product", auth, authAdmin, async (req, res)=>{
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error"
+            message: error.message
         });
     }
 });
@@ -91,9 +98,9 @@ ProductRouter.get("/product/:id", async (req, res)=>{
 //MODIFIAR UN PRODUCTO
 ProductRouter.put("/product/:id", auth, authAdmin, async (req, res)=>{
     const {id} = req.params;
-    const {title, description, price} = req.body
+    const {title, description, price, sizes, subcategoryId, image} = req.body
     try {
-        await Product.findByIdAndUpdate(id, {title, description, price})
+        await Product.findByIdAndUpdate(id, {title, description, price, sizes, subcategoryId, image})
         return res.status(200).json({
             success: true,
             message: "Product updated successfully"

@@ -1,0 +1,25 @@
+.foot{
+    display: flex;
+    flex-direction: row;
+    background-color: #F2C9CC;
+    height: 3rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+.icon{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 12px;
+}
+.number{
+    margin-left: 100px;
+}
+.face{
+    text-decoration: none;
+    color: blue;
+}
+.whats{
+    color: green;
+}

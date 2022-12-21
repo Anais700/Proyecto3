@@ -38,7 +38,7 @@ CategoryRouter.post("/category", auth, authAdmin, async (req, res)=>{
 
 CategoryRouter.get("/categories", async (req, res)=>{
     try{
-        let categories = await Category.find({})
+        let categories = await Category.find({}).populate({path:"Subcategory", select:"title image"});
         return res.status(200).json({
             success: true,
             categories
@@ -54,10 +54,10 @@ CategoryRouter.get("/categories", async (req, res)=>{
 CategoryRouter.get("/category/:id", async (req, res)=>{
     const {id} = req.params;
     try{
-        let season = await Category.findById(id).populate("Collections Seasons");
+        let category = await Category.findById(id).populate({path:"Subcategory", select:"title image"});
         return res.status(200).json({
             success: true,
-            season,
+            category,
             message: "Category found successfully"
         })
     } catch (error) {

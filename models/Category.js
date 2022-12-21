@@ -8,7 +8,7 @@ const categorySchema = new mongoose.Schema({
     },
     Subcategory:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Season"
+        ref: "Subcategory"
     }],
     // Collections:[{
     //     type: mongoose.Schema.Types.ObjectId,

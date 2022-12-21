@@ -7,7 +7,7 @@ const authAdmin = require("../middleware/authAdmin");
 
 SubcategoryRouter.post("/subcategory/:id", auth, authAdmin, async (req, res) =>{
     const {id} = req.params
-    const {title, description} = req.body
+    const {title, description, image} = req.body
   try{
     let category = await Category.findById(id)
 
@@ -29,6 +29,7 @@ SubcategoryRouter.post("/subcategory/:id", auth, authAdmin, async (req, res) =>{
             title,
             description,
             category: id,
+            image
         })
         await subcategory.save()
         await Category.findByIdAndUpdate(id, {
@@ -97,11 +98,31 @@ SubcategoryRouter.post("/subcategory/:id", auth, authAdmin, async (req, res) =>{
 // });
 
 SubcategoryRouter.get("/subcategories", async (req, res)=>{
+
     try{
         let subcategories = await Subcategory.find({})
         return res.status(200).json({
             success: true,
-            seasons
+            subcategories
+        })
+    } catch (error){
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+})
+
+SubcategoryRouter.get("/subcategories/:id", async (req, res)=>{
+    const {id} = req.params
+
+    try{
+        let category = await Category.findById(id)
+        console.log(category)
+        let subcategories = await Subcategory.find({})
+        return res.status(200).json({
+            success: true,
+            subcategories
         })
     } catch (error){
         return res.status(500).json({
@@ -114,7 +135,7 @@ SubcategoryRouter.get("/subcategories", async (req, res)=>{
 SubcategoryRouter.get("/subcategory/:id", async (req, res)=>{
     const {id} = req.params;
     try{
-        let subcategory = await Subcategory.findById(id);
+        let subcategory = await Subcategory.findById(id).populate({path:"products", select:"title image price"}).populate("category")
         return res.status(200).json({
             success: true,
             subcategory,
@@ -130,9 +151,9 @@ SubcategoryRouter.get("/subcategory/:id", async (req, res)=>{
 
 SubcategoryRouter.put("/subcategory/:id", auth, authAdmin, async (req, res)=>{
     const {id} = req.params
-    const {title, description} = req.body
+    const {title, description, category} = req.body
     try {
-        await Subcategory.findByIdAndUpdate(id, {title, description})
+        await Subcategory.findByIdAndUpdate(id, {title, description, category})
         return res.status(200).json({
             success: true,
             message: "Subcategory updated successfully"

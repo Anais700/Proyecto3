@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     price:{
         type: Number,
         maxlength: 10,
-        minlength: 2,
+        minlength: 1,
         required: true
     },
     // Category: {
@@ -29,6 +29,9 @@ const productSchema = new mongoose.Schema({
     Subcategory: {
         type: mongoose.Types.ObjectId,
         ref: "Subcategory"
+    },
+    sizes: {
+        type: String
     },
     image:{
         type: Object,

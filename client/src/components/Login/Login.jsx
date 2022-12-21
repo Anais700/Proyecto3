@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import axios from "axios";
 
 // useState me sirve para guardar la respuesta que me viene del back en una variable, pero también sirve para asignar (no para recibir, sino para enviar)
@@ -7,8 +8,9 @@ const Login = () => {
     email: "",
     password: "",
   });
-  // const [errorM, setErrorM] = useState(null);
-  const [successM, setSuccessM] = useState(null)
+  
+  const [successM, setSuccessM] = useState(null);
+  const [errorM, setErrorM] = useState(null);
 
   const onChangeInput = (event) => {
     const { name, value } = event.target;
@@ -24,15 +26,25 @@ const Login = () => {
         ...info,
       });
       console.log(response);
-      localStorage.setItem("token", response.data.acccessToken)
-      // localStorage.setItem("token")
+      setSuccessM(response.data.message)
+      localStorage.setItem("token", response.data.accessToken)
+      // localStorage.setItem("token") -- esto será necesario para todas las rutas donde necesitemos el token
+      localStorage.setItem("role", response.data.user.role)
+      localStorage.setItem("name", response.data.user.name)
+      setTimeout(() => {
+        window.location.href= "/"
+      }, 3000)
+
     } catch (error) {
-      // setErrorM(error.response.data.message);
+      setErrorM(error.response.data.message);
+      setTimeout(() => {
+        window.location.href= "/login";
+      }, 3000);
     }
   };
 
   return (
-    <div>
+    <div>     
       <h1>Login</h1>
       <form className="formulario" onSubmit={loginSubmit}>
         <div className="mb-3">
@@ -79,9 +91,16 @@ const Login = () => {
           Submit
         </button>
       </form>
+
       <div className="alert alert-primary" role="alert" 
-      style={{display: successM ? "block": "none" }}> 
-        
+      style={{display: successM ? "block": "none" }}
+      > 
+      {successM}
+      </div>
+      <div className="alert alert-danger" role="alert" 
+      style={{display: errorM ? "block": "none" }}
+      > 
+      {errorM}
       </div>
     </div>
   );
