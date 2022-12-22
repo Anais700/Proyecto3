@@ -103,12 +103,7 @@ console.log(product)
       return(
         <div>
 
-          <h1>Editar producto</h1>
-          <input 
-          type="file"
-          name= "file"
-          id=""
-          onChange={handleUpload} />
+          <h2>Editar producto</h2>
 
       <form className="producto" onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -182,6 +177,11 @@ console.log(product)
             placeholder={product.price}
           />
         </div>
+        <input 
+          type="file"
+          name= "file"
+          id=""
+          onChange={handleUpload} />
         <div>
         <img src={image.url} alt="imagen"/>
         </div>

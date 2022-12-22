@@ -39,11 +39,12 @@ const Register = () => {
 
   return (
     <div>
-      <h1>Registro</h1>
+      <h2>Registro</h2>
+      <div className="log">
       <form className="registro" onSubmit={registerSubmit}>
         <div className="mb-3">
           <label for="exampleInputName1" className="form-label">
-            Nombre
+            Nombre:
           </label>
           <input
             name="name"
@@ -56,7 +57,7 @@ const Register = () => {
         </div>
         <div className="mb-3">
           <label for="exampleInputSurname1" className="form-label">
-            Apellido
+            Apellido:
           </label>
           <input
             name="surname"
@@ -82,7 +83,7 @@ const Register = () => {
         </div>
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
-            Email address
+            Email:
           </label>
           <input
             name="email"
@@ -93,13 +94,10 @@ const Register = () => {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label">
-            Password
+            Password:
           </label>
           <input
             name="password"
@@ -112,9 +110,10 @@ const Register = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Submit
+          Crear cuenta
         </button>
       </form>
+      </div>
 
       <div
         className="alert alert-primary"

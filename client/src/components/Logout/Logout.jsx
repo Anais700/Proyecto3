@@ -16,11 +16,7 @@ const Logout = () => {
 
     return (
         <div>
-            <h2>Esperamos verte pronto</h2>
-
-            <Link to={"/login"}>
-            <button>Ir a iniciar sesión</button>    
-            </Link>
+            <h1>¡Esperamos verte pronto!</h1>
         </div>
 
     )

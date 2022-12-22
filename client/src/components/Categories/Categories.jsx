@@ -23,6 +23,7 @@ const Categories = () => {
         <div>
 
             <h2>Categorías</h2>
+            <div className="categorias">
             {
                 categories.map((category)=>{
                     return(
@@ -32,15 +33,17 @@ const Categories = () => {
                             <h4>{category.title}</h4>
                             {/* <p>{category.Subcategory}</p> */}
                         </div>
+                        <div>
                         {role == 2? ( <Link to={`/newSubcategory/${category._id}`} >
-                            <button>Añadir subcategoría</button></Link>) : (<></>)}
+                            <button className="btn btn-primary">Añadir subcategoría</button></Link>) : (<></>)}
+                        </div>
                         </Link>
                         </>
                        
                     )
                 })
             }
-
+            </div>
         </div>
     )
 }

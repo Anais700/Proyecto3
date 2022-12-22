@@ -18,9 +18,9 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="product1">
+    <div className="product1 mb-2">
       {/* <Navbar/> */}
-      <h1>Productos</h1>
+      <h2 className="mb-3">Productos</h2>
       {/* .map() => es lo mismo que un bucle for */}
       <div className="mb-4">
       {products.map((pro) => {

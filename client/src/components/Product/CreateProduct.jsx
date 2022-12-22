@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
@@ -14,82 +14,83 @@ const CreateProduct = () => {
   });
 
   const [image, setImage] = useState({});
-  const [successM, setSuccessM] = useState(null)
+  const [successM, setSuccessM] = useState(null);
   const [subcategories, setSubcategories] = useState([]);
   const token = localStorage.getItem("token");
-// console.log(token)
-  useEffect(()=>{
+  // console.log(token)
+  useEffect(() => {
     const getSubcategory = async () => {
-      const resS = await axios.get("http://localhost:5000/api/subcategories")
-      setSubcategories(resS.data.subcategories)
-      console.log(resS)
-    }
-    getSubcategory()
-  }, [])
+      const resS = await axios.get("http://localhost:5000/api/subcategories");
+      setSubcategories(resS.data.subcategories);
+      console.log(resS);
+    };
+    getSubcategory();
+  }, []);
 
-  const handleUpload = async (e) =>{
-    e.preventDefault()
+  const handleUpload = async (e) => {
+    e.preventDefault();
     try {
       const file = e.target.files[0];
-      if(!file) return alert("No se ha subido la imagen")
+      if (!file) return alert("No se ha subido la imagen");
       // Se pueden poner las mismas condiciones que en el back
 
       let formData = new FormData();
-      formData.append("file", file)
-      const response = await axios.post("http://localhost:5000/api/upload", 
-      formData, {
-        headers: {
-          Authorization: token,
-          "content-type": "multipart/form-data"
+      formData.append("file", file);
+      const response = await axios.post(
+        "http://localhost:5000/api/upload",
+        formData,
+        {
+          headers: {
+            Authorization: token,
+            "content-type": "multipart/form-data",
+          },
         }
-      });
+      );
 
-      console.log(response)
-      setImage(response.data)
-
-      } catch (error) { 
-        console.log(error.response)          
-      }
-    };
-
-    // console.log(image.url)   
-
-    const handleChange = (e) =>{
-      const { name, value } = e.target;
-      setProduct({ ...product, [name]: value });
+      console.log(response);
+      setImage(response.data);
+    } catch (error) {
+      console.log(error.response);
     }
-console.log(product)
-    const handleSubmit = async (e) => {
+  };
+
+  // console.log(image.url)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct({ ...product, [name]: value });
+  };
+  console.log(product);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     const res = await axios.post("http://localhost:5000/api/product", {
-      ...product, image,
-     },
-     {
-      headers: {
-        Authorization: token,
-      }
-     });
+      const res = await axios.post(
+        "http://localhost:5000/api/product",
+        {
+          ...product,
+          image,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
 
-    console.log(res);
-    setSuccessM(res.data.message)
-    setTimeout(() =>{
-      window.location.href = "/";
-    });
+      console.log(res);
+      setSuccessM(res.data.message);
+      setTimeout(() => {
+        window.location.href = "/";
+      });
     } catch (error) {
-      console.log(error.response)
+      console.log(error.response);
     }
-  }
-      return(
-        <div>
-          <Navbar/>
-          <h1>Crear nuevo producto</h1>
-          <input 
-          type="file"
-          name= "file"
-          id=""
-          onChange={handleUpload} />
+  };
+  return (
+    <div>
+      <h2>Crear nuevo producto</h2>
 
+      <div className="sol">
       <form className="producto" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label for="exampleInputTitle1" className="form-label">
@@ -131,12 +132,13 @@ console.log(product)
           /> */}
           <select name="subcategoryId" id="" onChange={handleChange}>
             <option selected>selecciona...</option>
-          {
-            subcategories.map((sub) =>{
-              return(
-              <option value={sub._id} key={sub._id}>{sub.title}</option>
-            )})
-          }
+            {subcategories.map((sub) => {
+              return (
+                <option value={sub._id} key={sub._id}>
+                  {sub.title}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div className="mb-3">
@@ -165,16 +167,19 @@ console.log(product)
             id="exampleInputPrice1"
           />
         </div>
+        <p>Foto</p>
+        <input type="file" name="file" id="" onChange={handleUpload} />
+
         <div>
-        <img src={image.url} alt="imagen"/>
+          <img src={image.url} alt="imagen" className="foto1" />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary crear">
           Crear producto
         </button>
       </form>
-
-        </div>
-      )
+      </div>
+    </div>
+  );
 };
 
 export default CreateProduct;

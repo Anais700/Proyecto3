@@ -1,4 +1,7 @@
 .registro {
-    width: 50%;
+    width: 60%;
     margin: auto
+}
+input .form-control{
+    width: 8rem;
 }

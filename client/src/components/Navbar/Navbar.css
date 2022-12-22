@@ -2,8 +2,12 @@
     background-color: #F2C9CC;
 }
 .form-control{
-    width: 7rem;
+    width: 6rem;
 }
 .logo{
     border-radius: 50%;
+}
+.buscar{
+    background-color: rgba(255, 255, 255, 0.048);
+    border-color: #2f8341;
 }

@@ -85,17 +85,12 @@ console.log(subcategory)
   }
       return(
         <div>
-          <h1>Crear nueva subcategoría</h1>
-          <input 
-          type="file"
-          name= "file"
-          id=""
-          onChange={handleUpload} />
+          <h2>Crear nueva subcategoría</h2>
 
-      <form className="subcategoria" onSubmit={handleSubmit}>
+      <form className="categoria" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label for="exampleInputTitle1" className="form-label">
-            Nombre
+          <label for="exampleInputTitle1" className="form-label me-2">
+            Nombre:
           </label>
           <input
             name="title"
@@ -107,8 +102,8 @@ console.log(subcategory)
           />
         </div>
         <div className="mb-3">
-          <label for="exampleInputDescription1" className="form-label">
-            Descripción
+          <label for="exampleInputDescription1" className="form-label me-2">
+            Descripción:
           </label>
           <input
             name="description"
@@ -134,9 +129,14 @@ console.log(subcategory)
           }
           </select> */}
         </div>
+        <input 
+          type="file"
+          name= "file"
+          id=""
+          onChange={handleUpload} />
         
         <div>
-        <img src={image.url} alt="imagen"/>
+        <img src={image.url} alt="imagen" className="foto1"/>
         </div>
         <button type="submit" className="btn btn-primary">
           Crear subcategoría

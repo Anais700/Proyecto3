@@ -1,0 +1,14 @@
+.boton{
+    display: flex;
+    width: 40%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    margin-top: 3rem;
+    margin-bottom: 15rem;
+}
+.tsub{
+    width: 40%;
+    margin: auto;
+}

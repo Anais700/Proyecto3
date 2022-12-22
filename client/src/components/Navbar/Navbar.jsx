@@ -12,7 +12,6 @@ const Navbar = () => {
     return(
   <nav className="navbar navbar-expand-lg">
   <div className="container-fluid">
-
      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -39,8 +38,8 @@ const Navbar = () => {
     <a className="navbar-brand" href="/">
        <img src={Logo} alt="logo" width="58" height="58" className="logo position-absolute top-0 start-50 translate-middle-x mb-2"/>
     </a>
-      <form className="d-flex" role="search">
-        <input className="form-control me-1" type="search" placeholder="Buscar..." aria-label="Search"/>
+      <form className="d-flex buscar" role="search">
+        <input className="form-control me-1 buscar" type="search" placeholder="Buscar..." aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">
           <FiSearch/>
         </button>
@@ -55,11 +54,12 @@ const Navbar = () => {
     return(
     <nav className="navbar navbar-expand-lg">
     <div className="container-fluid">
-      <a className="navbar-brand" href="/">Bienvenid@, {name}</a>
+
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <a className="navbar-brand" href="/">Bienvenid@ {name}</a>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="/profile">Mi perfil</a>
@@ -83,11 +83,15 @@ const Navbar = () => {
             <a className="nav-link" href="/logout">Cerrar sesión</a>
           </li>
         </ul>
-        <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit">Search</button>
+        </div>
+        <a className="navbar-brand" href="/">
+       <img src={Logo} alt="logo" width="58" height="58" className="logo position-absolute top-0 start-50 translate-middle-x mb-2"/>
+    </a>
+        <form className="d-flex buscar" role="search">
+          <input className="form-control me-2 buscar" type="search" placeholder="Buscar..." aria-label="Search"/>
+          <button className="btn btn-outline-success" type="submit">  <FiSearch/></button>
         </form>
-      </div>
+
     </div>
   </nav>
     )};
@@ -97,11 +101,11 @@ const Navbar = () => {
     return(
       <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">Bienvenid@, {name}</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <a className="navbar-brand" href="/">Bienvenid@ {name}</a>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/profile">Mi perfil</a>
@@ -116,9 +120,6 @@ const Navbar = () => {
               <a className="nav-link active" aria-current="page" href="/newCategory">Crear categorías</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/newSubcategories">Crear subcategorías</a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link active" href="/newProduct">Añadir productos</a>
             </li>
             <li className="nav-item">
@@ -129,11 +130,14 @@ const Navbar = () => {
             <a className="nav-link" href="/logout">Cerrar sesión</a>
           </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success" type="submit">Search</button>
+          </div>
+          <a className="navbar-brand" href="/">
+       <img src={Logo} alt="logo" width="58" height="58" className="logo position-absolute top-0 start-50 translate-middle-x mb-2"/>
+        </a>          
+          <form className="d-flex buscar" role="search">
+            <input className="form-control me-2 buscar" type="search" placeholder="Buscar" aria-label="Search"/>
+            <button className="btn btn-outline-success" type="submit"><FiSearch/></button>
           </form>
-        </div>
       </div>
     </nav>
       )};

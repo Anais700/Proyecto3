@@ -52,7 +52,8 @@ const Category = () => {
 
   return (
     <div>
-      <h1>{category.title}</h1>
+      <h2>{category.title}</h2>
+      <div className="categoria">
       {subcategory.map((subc) => {
         return (
           <Link
@@ -60,38 +61,34 @@ const Category = () => {
             to={`/subcategory/${subc._id}`}
             className="subcategory"
           >
-            <h2>{subc.title}</h2>
+            <h4>{subc.title}</h4>
+            <img src={subc.image.url} className="card-img-top foto1" alt="image product"/>
           </Link>
         );
         
       })}
-      
-      <Link to={"/"}>
-        <button>Volver</button>
-      </Link>
+      </div>
 
-      {/* <div className="card tpro">
-  <img className="card-img-top" alt="image category"/>
-  <div className="card-body">
-    <h5 className="card-title">{category.title}</h5>
-    <p className="card-text">{category.description}</p>
-    <a href="/" className="btn btn-primary">Volver a productos</a>
-  </div>
-  </div> */}
+      <div className="mb-5 botones">
+      {/* <Link to={"/"}>
+        <button className="btn btn-secondary">Volver</button>
+      </Link> */}
       {role == 2 ? (
-        <button onClick={deleteCategory} className="btn btn-danger">
+        <Link to={`/modifyCategory/${categoryId}`}>
+          <button className="btn btn-secondary">Editar categoría</button>
+        </Link>
+      ) : (
+        <></>
+      )}
+      {role == 2 ? (
+        <button onClick={deleteCategory} className="btn btn-outline-danger">
           Borrar categoría
         </button>
       ) : (
         <></>
       )}
-      {role == 2 ? (
-        <Link to={`/modifyCategory/${categoryId}`}>
-          <button>Modificar categoría</button>
-        </Link>
-      ) : (
-        <></>
-      )}
+
+      </div>
     </div>
   );
 };

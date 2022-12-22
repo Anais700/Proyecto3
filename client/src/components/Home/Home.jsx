@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <div>
-      <h3>¡Novedades!</h3>
+      <h2>¡Novedades!</h2>
       {
         newProduct.map((product)=>{
           const newSubcategory = subcategories.slice(subcategories.length-1)

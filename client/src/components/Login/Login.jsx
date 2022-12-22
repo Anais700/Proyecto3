@@ -45,11 +45,12 @@ const Login = () => {
 
   return (
     <div>     
-      <h1>Login</h1>
+      <h2>Login</h2>
+      <div className="log">
       <form className="formulario" onSubmit={loginSubmit}>
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
-            Email address
+            Email:
           </label>
           <input
             name="email"
@@ -60,13 +61,10 @@ const Login = () => {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label">
-            Password
+            Password:
           </label>
           <input
             type="password"
@@ -77,20 +75,11 @@ const Login = () => {
             onChange={onChangeInput}
           />
         </div>
-        <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label" for="exampleCheck1">
-            Check me out
-          </label>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="btn btn-primary ms-3">
+          Iniciar sesión
         </button>
       </form>
+      </div>
 
       <div className="alert alert-primary" role="alert" 
       style={{display: successM ? "block": "none" }}

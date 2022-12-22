@@ -19,3 +19,5 @@ code {
 @import url("../src/components/Navbar/Navbar.css");
 @import url("../src/components/User/Profile.css");
 @import url("../src/components/Footer/Footer.css");
+@import url("../src/components/Category/Category.css");
+@import url("../src/components/Subcategory/Subcategory.css");

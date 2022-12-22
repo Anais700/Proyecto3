@@ -58,12 +58,12 @@ console.log(category)
       return(
         <div>
 
-        <h1>Editar categoría</h1>
+        <h2>Editar categoría</h2>
        
     <form className="categoria" onSubmit={handleSubmit}>
       <div className="mb-3">
         <label for="exampleInputTitle1" className="form-label">
-          Nombre
+          Nombre:
         </label>
         <input
           name="title"
@@ -76,8 +76,8 @@ console.log(category)
         />
       </div>
       
-      <button type="submit" className="btn btn-primary">
-        Guardar cambios
+      <button type="submit" className="btn btn-primary ms-2">
+        Guardar
       </button>
     </form>
     <div

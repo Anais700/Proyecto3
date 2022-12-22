@@ -2,3 +2,27 @@
     width: 30%;
     margin: auto;
 }
+.sol{
+    display: flex;
+    margin: auto;
+    margin-top: 3rem;
+    width: 60%;
+}
+.producto{
+    margin: auto;
+}
+select{
+    margin-left: 2rem;
+}
+.foto1{
+    width: 60%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.crear{
+    margin-left: 3rem;
+}
+input .name{
+    width: 5rem;
+    padding-right: 3rem;
+}

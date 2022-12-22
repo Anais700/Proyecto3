@@ -1,4 +1,25 @@
 .formulario {
-    width: 50%;
+    width: 60%;
     margin: auto
+}
+div .log{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    width: 65%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:#B1DBF2;
+    text-align: justify;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 2%;
+    align-items: center;
+}
+h1{
+    display: flex;
+    margin: auto;
+    margin-top: 10rem;
+    text-align: center;
 }

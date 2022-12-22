@@ -1,0 +1,48 @@
+.categoria{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    text-align: center;
+}
+.nom{
+    margin: auto;
+    text-align: center;
+    margin-right: 15px;
+}
+.mb-3{
+    display: flex;
+    flex-direction: row;
+}
+.boto{
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.category{
+    text-decoration: none;
+}
+h4{
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+.categorias{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 7rem;
+}
+.botones{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+}

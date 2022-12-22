@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Navbar from "../Navbar/Navbar";
 import {useNavigate} from "react-router-dom"
 
 
@@ -42,13 +41,12 @@ const CreateCategory = () => {
   }
       return(
         <div>
-
-          <h1>Crear nueva categoría</h1>
-         
-      <form className="categoria" onSubmit={handleSubmit}>
+          <h2>Crear nueva categoría</h2>
+         <div className="categoria">
+      <form  onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label for="exampleInputTitle1" className="form-label">
-            Nombre
+          <label className="form-label nom">
+            Nombre: 
           </label>
           <input
             name="title"
@@ -59,11 +57,13 @@ const CreateCategory = () => {
             id="exampleInputTitle1"
           />
         </div>
-        
+        <div className="boto">
         <button type="submit" className="btn btn-primary">
           Crear categoría
         </button>
+        </div>
       </form>
+      </div>
       <div
         className="alert alert-primary"
         role="alert"

@@ -59,24 +59,26 @@ return(
         <Link to={"/"}>
             <button>Volver a productos</button>
         </Link> */}
-        <div className="card tpro">
+        <div className="card tprodu">
   <img src={image.url} className="card-img-top" alt="image product"/>
   <div className="card-body">
     <h5 className="card-title">{product.title}</h5>
     <p className="card-text">{product.description}</p>
     <p className="card-text">{product.sizes}</p>
-    <p className="card-text">{product.price}</p>
-    <a href="/" className="btn btn-primary">Volver a productos</a>
+    <p className="card-text">$ {product.price} MXN</p>
+<div className="botPro">
+    <a href="/" className="btn btn-primary mb-2">Volver a productos</a>
     {role == 2? (
-    <button onClick={deleteProduct} className="btn btn-danger">Borrar producto</button>
+    <button onClick={deleteProduct} className="btn btn-outline-danger mb-2">Borrar producto</button>
     ) : (<></>)
     }
     {role == 2? (
         <Link to = {`/modifyProduct/${productId}`}>
-            <button >Modificar producto</button>
+            <button className="btn btn-secondary">Editar producto</button>
         </Link>
     ) : (<></>)
     }
+    </div>
   </div>
 </div>
 </div>
